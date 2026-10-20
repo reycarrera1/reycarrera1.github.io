@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Quiz</title>
+
+    <!-- Link to the CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function checkAnswers(event) {
+            event.preventDefault();
+
+            let score = 0;
+            const totalQuestions = 4;
+
+            // Correct answers for each question
+            const correctAnswers = {
+                q1: ["jupiter"],
+                q2: ["mercury"],
+                q3: ["mercury", "venus", "mars"],
+                q4: ["europa", "titan", "phobos"]
+            };
+
+            // Check each question
+            for (let question in correctAnswers) {
+                const selected = Array.from(
+                    document.querySelectorAll(
+                        'input[name="' + question + '"]:checked'
+                    )
+                ).map(input => input.value);
+
+                const correct = correctAnswers[question];
+
+                // Find the question's feedback area
+                const feedback = document.getElementById(
+                    question + "-feedback"
+                );
+
+                // Remove old highlighting
+                document.querySelectorAll(
+                    'input[name="' + question + '"]'
+                ).forEach(input => {
+                    input.parentElement.classList.remove(
+                        "correct",
+                        "incorrect",
+                        "missed"
+                    );
+                });
+
+                // Check whether the answer is completely correct
+                const isCorrect =
+                    selected.length === correct.length &&
+                    correct.every(answer => selected.includes(answer));
+
+                if (isCorrect) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.className = "feedback correct-text";
+                } else {
+                    feedback.textContent =
+                        "Incorrect. Correct answer: " +
+                        correct.map(answer =>
+                            answer.charAt(0).toUpperCase() +
+                            answer.slice(1)
+                        ).join(", ");
+
+                    feedback.className = "feedback incorrect-text";
+                }
+
+                // Highlight correct and incorrect choices
+                document.querySelectorAll(
+                    'input[name="' + question + '"]'
+                ).forEach(input => {
+                    if (correct.includes(input.value)) {
+                        input.parentElement.classList.add("correct");
+                    } else if (input.checked) {
+                        input.parentElement.classList.add("incorrect");
+                    }
+                });
+            }
+
+            // Display the final score
+            document.getElementById("result").textContent =
+                "Your score: " + score + " out of " + totalQuestions;
+        }
+
+        function resetQuiz() {
+            document.getElementById("result").textContent = "";
+
+            // Clear feedback and highlighting
+            document.querySelectorAll(".feedback").forEach(feedback => {
+                feedback.textContent = "";
+                feedback.className = "feedback";
+            });
+
+            document.querySelectorAll(".answer").forEach(answer => {
+                answer.classList.remove(
+                    "correct",
+                    "incorrect",
+                    "missed"
+                );
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <header>
+            <h1>Solar System Quiz</h1>
+            <p>Test your knowledge of our solar system!</p>
+        </header>
+
+        <form onsubmit="checkAnswers(event)" onreset="resetQuiz()">
+
+            <!-- Question 1: Multiple choice -->
+            <section class="question">
+                <h2>1. What is the largest planet in our solar system?</h2>
+
+                <label class="answer">
+                    <input type="radio" name="q1" value="earth">
+                    Earth
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q1" value="jupiter">
+                    Jupiter
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q1" value="mars">
+                    Mars
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q1" value="venus">
+                    Venus
+                </label>
+
+                <p id="q1-feedback" class="feedback"></p>
+            </section>
+
+            <!-- Question 2: Multiple choice -->
+            <section class="question">
+                <h2>2. Which planet is closest to the Sun?</h2>
+
+                <label class="answer">
+                    <input type="radio" name="q2" value="venus">
+                    Venus
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q2" value="earth">
+                    Earth
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q2" value="mercury">
+                    Mercury
+                </label>
+
+                <label class="answer">
+                    <input type="radio" name="q2" value="mars">
+                    Mars
+                </label>
+
+                <p id="q2-feedback" class="feedback"></p>
+            </section>
+
+            <!-- Question 3: Multiple answers -->
+            <section class="question">
+                <h2>3. Which of these are rocky planets? Select all that apply.</h2>
+
+                <label class="answer">
+                    <input type="checkbox" name="q3" value="mercury">
+                    Mercury
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q3" value="venus">
+                    Venus
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q3" value="mars">
+                    Mars
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q3" value="jupiter">
+                    Jupiter
+                </label>
+
+                <p id="q3-feedback" class="feedback"></p>
+            </section>
+
+            <!-- Question 4: Multiple answers -->
+            <section class="question">
+                <h2>4. Which of these are moons? Select all that apply.</h2>
+
+                <label class="answer">
+                    <input type="checkbox" name="q4" value="europa">
+                    Europa
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q4" value="titan">
+                    Titan
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q4" value="phobos">
+                    Phobos
+                </label>
+
+                <label class="answer">
+                    <input type="checkbox" name="q4" value="pluto">
+                    Pluto
+                </label>
+
+                <p id="q4-feedback" class="feedback"></p>
+            </section>
+
+            <!-- Submit and reset buttons -->
+            <div class="buttons">
+                <button type="submit">Check Answers</button>
+                <button type="reset" class="reset-button">Try Again</button>
+            </div>
+
+            <!-- Final score -->
+            <h2 id="result" aria-live="polite"></h2>
+
+        </form>
+
+        <footer>
+            <p>Explore the universe, one question at a time!</p>
+        </footer>
+    </div>
+</body>
+</html>
+```

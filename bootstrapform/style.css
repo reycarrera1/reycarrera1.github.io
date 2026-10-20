@@ -1,0 +1,93 @@
+
+/* Style the entire webpage */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Center the main content and create a white container */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* Style the headings */
+h1, h2 {
+    color: #333333;
+}
+
+/* Add space around form fields */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Style email input boxes */
+input[type="email"] {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Display email error messages in red */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Style buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Change button color when the mouse hovers over it */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Add space between the two sections */
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #cccccc;
+}
+
+/* Add space between pizza choices */
+.choice {
+    margin: 10px 0;
+}
+
+/* Hide the pepperoni message until pepperoni is selected */
+#pepperoni-topping {
+    display: none;
+    color: green;
+    font-size: 14px;
+}
+
+/* Style the pizza order summary */
+#output {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+}
+
+/* Make the container fit smaller screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+}

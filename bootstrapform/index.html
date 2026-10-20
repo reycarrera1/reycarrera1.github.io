@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the webpage responsive on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Email Confirmation and Pizza Order</title>
+
+    <!-- Connect the external CSS file -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Connect the external JavaScript file -->
+    <script src="code.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- EMAIL CONFIRMATION SECTION -->
+        <h1>Email Confirmation</h1>
+
+        <form id="email-form">
+
+            <!-- First email input -->
+            <div class="form-group">
+                <label for="email">Enter Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                >
+                <div id="email-error" class="error"></div>
+            </div>
+
+            <!-- Confirmation email input -->
+            <div class="form-group">
+                <label for="confirm">Confirm Email:</label>
+                <input
+                    type="email"
+                    id="confirm"
+                    name="confirm"
+                    placeholder="Confirm your email"
+                >
+                <div id="confirm-error" class="error"></div>
+            </div>
+
+            <!-- Button to validate the email addresses -->
+            <button type="submit">Check Email</button>
+
+        </form>
+
+        <hr>
+
+        <!-- PIZZA ORDER SECTION -->
+        <h1>Pizza Order</h1>
+
+        <form id="pizza-form">
+
+            <!-- Pizza size options -->
+            <h2>Choose Your Pizza Size</h2>
+
+            <div class="choice">
+                <input type="radio" id="small" name="size" value="Small">
+                <label for="small">Small</label>
+            </div>
+
+            <div class="choice">
+                <input type="radio" id="medium" name="size" value="Medium">
+                <label for="medium">Medium</label>
+            </div>
+
+            <div class="choice">
+                <input type="radio" id="large" name="size" value="Large">
+                <label for="large">Large</label>
+            </div>
+
+            <!-- Pizza topping options -->
+            <h2>Choose Your Toppings</h2>
+
+            <div class="choice">
+                <input type="checkbox" id="pepperoni" name="toppings">
+                <label for="pepperoni">Pepperoni</label>
+            </div>
+
+            <!-- This message appears when pepperoni is selected -->
+            <p id="pepperoni-topping">
+                Pepperoni has been added to your pizza!
+            </p>
+
+            <div class="choice">
+                <input type="checkbox" id="sausage" name="toppings">
+                <label for="sausage">Sausage</label>
+            </div>
+
+            <div class="choice">
+                <input type="checkbox" id="mushrooms" name="toppings">
+                <label for="mushrooms">Mushrooms</label>
+            </div>
+
+            <!-- Button to create the order summary -->
+            <button type="submit">Place Pizza Order</button>
+
+        </form>
+
+        <!-- JavaScript displays the order summary here -->
+        <div id="output"></div>
+
+    </div>
+
+</body>
+</html>
+

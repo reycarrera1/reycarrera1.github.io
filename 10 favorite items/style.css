@@ -1,0 +1,53 @@
+/* Style the entire webpage */
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightgrey;
+    color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the page header */
+header {
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Style the main content */
+main {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: blue;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the heading */
+h2 {
+    color: black;
+    text-align: center;
+}
+
+/* Style each favorite item */
+ol {
+    padding-left: 40px;
+}
+
+li {
+    background-color: darkgray;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* Style the footer */
+footer {
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding: 15px;
+}

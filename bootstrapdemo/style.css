@@ -34,3 +34,11 @@ body{
     color: white;
     margin: 0;
 }
+
+table, th, td {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
